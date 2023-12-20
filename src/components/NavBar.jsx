@@ -489,7 +489,7 @@ export default function NavBar() {
         <header className="bg-white shadow">
           <div className="px-4 py-6 mx-auto sm:px-6 lg:px-8">
             <h1 className="text-xl font-semibold leading-tight tracking-tight text-gray-900">
-              Operating Systems
+              COMP 3511
             </h1>
           </div>
         </header>

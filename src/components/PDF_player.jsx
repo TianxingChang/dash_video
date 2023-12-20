@@ -2,7 +2,6 @@ import Iframe from "react-iframe";
 import React, { useEffect, useRef, useState } from "react";
 const PDF_player = ({ isVideo, time }) => {
   const z_index = isVideo ? "z-0" : "z-20";
-  useEffect(() => console.log("time is ", time));
   return (
     <div className={`absolute top-0 ${z_index} w-full h-full aspect-video `}>
       <Iframe

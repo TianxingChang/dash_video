@@ -11,6 +11,7 @@ import Quiz from "./components/videoBelow/Quiz";
 import Comments from "./components/videoBelow/Comments";
 import React, { useState } from "react";
 import Notes from "./components/Notes";
+// import Test from "./components/api/test";
 
 // import { pdfjs } from "react-pdf";
 // pdfjs.GlobalWorkerOptions.workerSrc = new URL(
@@ -29,7 +30,7 @@ function App() {
   };
 
   return (
-    <body className="h-screen overflow-hidden">
+    <div className="h-screen overflow-hidden">
       {/* <div className="fixed top-0 w-full bg-white z-15 h- placeHolder">.</div> */}
       <NavBar />
 
@@ -66,6 +67,8 @@ function App() {
           <Comments />
           <Comments />
           <Comments />
+
+          {/* <Test /> */}
           <Comments />
           <Comments />
 
@@ -77,7 +80,7 @@ function App() {
           <Chat askButton={askButton} time={currentTimeVideo} />
         </div>
       </div>
-    </body>
+    </div>
   );
 }
 

@@ -73,18 +73,32 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function ChatWindow() {
+export default function ChatWindow({ handleFormSubmit, time }) {
   const [selected, setSelected] = useState(moods[5]);
+  const [chatReq, setChatReq] = useState("wtf");
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevent default form submission
+
+    // Call your form submission handler
+    handleFormSubmit(time, chatReq);
+  };
 
   return (
     <div className="flex items-start space-x-4">
       <div className="flex-1 min-w-0">
         <form action="#" className="relative">
-          <div className="overflow-hidden rounded-lg shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-indigo-600">
+          <div
+            onSubmit={() => {
+              handleFormSubmit(time, chatReq);
+            }}
+            className="overflow-hidden rounded-lg shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-indigo-600"
+          >
             <label htmlFor="comment" className="sr-only">
               Ask ai about this course
             </label>
             <textarea
+              onChange={(e) => setChatReq(e.target.value)}
               rows={3}
               name="comment"
               id="comment"
@@ -201,6 +215,7 @@ export default function ChatWindow() {
             <div className="flex-shrink-0">
               <button
                 type="submit"
+                onClick={handleSubmit}
                 className="inline-flex items-center px-3 py-2 text-sm font-semibold text-white bg-indigo-600 rounded-md shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Post

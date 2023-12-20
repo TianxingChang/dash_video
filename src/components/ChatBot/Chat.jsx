@@ -4,9 +4,41 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 import ChatWindow from "./ChatWindow";
 import AnswerWindow from "./AnswerWindow";
 import PostWindow from "./postWIndow";
+import axios from "axios";
 
 export default function Chat({ askButton, time }) {
   const [open, setOpen] = useState(askButton);
+  const [posts, setPosts] = useState([]);
+
+  const handleFormSubmit = async (time, question) => {
+    // time, question.preventDefault();
+
+    const payload = {
+      time: time.toString(),
+      question: question.toString(),
+    };
+    console.log(payload);
+
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/items/",
+        payload
+      );
+
+      const newPost = {
+        id: response.data.time,
+        time: payload.time,
+        question: payload.question,
+        answer: response.data.question,
+        // answer: response.data.answer,
+      };
+      setPosts((prevPosts) => [...prevPosts, newPost]);
+      // Handle the response as needed
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   useEffect(() => {
     setOpen(askButton);
@@ -29,8 +61,8 @@ export default function Chat({ askButton, time }) {
                 leaveFrom="translate-x-0"
                 leaveTo="translate-x-full"
               >
-                <Dialog.Panel className="right-0 w-screen h-full pointer-events-auto ">
-                  <div className="flex flex-col py-6 mx-4 mb-4 overflow-y-scroll bg-white border-2 shadow-xl bottom-10 rounded-xl border-slate-600">
+                <Dialog.Panel className="right-0 w-screen h-full overflow-y-auto pointer-events-auto ">
+                  <div className="flex flex-col py-6 mx-4 mb-4 overflow-y-scroll bg-white border-2 shadow-xl max-h-2/3 bottom-10 rounded-xl border-slate-600">
                     <div className="px-4 sm:px-6">
                       <div className="flex items-start justify-between">
                         <Dialog.Title className="text-base font-semibold leading-6 text-gray-900">
@@ -54,9 +86,17 @@ export default function Chat({ askButton, time }) {
                         Ask at Time{" "}
                         {`${parseInt(time / 60)}:${parseInt(time) % 60}`}
                       </span>
-                      <PostWindow />
-                      <AnswerWindow />
-                      <ChatWindow />
+
+                      {posts.map((post) => (
+                        <Fragment key={post.id}>
+                          <PostWindow key={time} post={post.question} />
+                          <AnswerWindow answer={post.answer} />
+                        </Fragment>
+                      ))}
+                      <ChatWindow
+                        handleFormSubmit={handleFormSubmit}
+                        time={time}
+                      />
                     </div>
                   </div>
                 </Dialog.Panel>

@@ -1,17 +1,3 @@
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
 import { Fragment, useState } from "react";
 import {
   FaceFrownIcon,
@@ -73,38 +59,33 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function PostWindow() {
+export default function PostWindow({ key, post }) {
   const [selected, setSelected] = useState(moods[5]);
 
   return (
     <div className="flex items-start space-x-4">
       <div className="flex-1 min-w-0">
         <form action="#" className="relative">
-          <div className="overflow-hidden rounded-lg shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-indigo-600">
+          <div className="overflow-hidden rounded-lg shadow-sm min-h-10 ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-indigo-600">
             <label htmlFor="comment" className="sr-only">
               Ask ai about this course
             </label>
             <textarea
-              rows={3}
+              readOnly={true}
               name="comment"
+              rows={3}
               id="comment"
-              className="block w-full resize-none border-0 bg-transparent py-1.5 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-              placeholder="Ask ai about this course."
+              className="block w-full h-auto resize-none border-0 bg-transparent py-1.5 text-gray-900 placeholder:text-gray-900 focus:ring-0 sm:text-sm sm:leading-6"
+              placeholder={post}
               defaultValue={""}
             />
 
             {/* Spacer element to match the height of the toolbar */}
-            <div className="py-2" aria-hidden="true">
-              {/* Matches height of button in toolbar (1px border + 36px content height) */}
-              <div className="py-px">
-                <div className="h-9" />
-              </div>
-            </div>
           </div>
 
           <div className="absolute inset-x-0 bottom-0 flex justify-between py-2 pl-3 pr-2">
             <div className="flex items-center space-x-5">
-              <div className="flex items-center">
+              {/* <div className="flex items-center">
                 <button
                   type="button"
                   className="-m-2.5 flex h-10 w-10 items-center justify-center rounded-full text-gray-400 hover:text-gray-500"
@@ -112,9 +93,9 @@ export default function PostWindow() {
                   <PaperClipIcon className="w-5 h-5" aria-hidden="true" />
                   <span className="sr-only">Attach a file</span>
                 </button>
-              </div>
+              </div> */}
               <div className="flex items-center">
-                <Listbox value={selected} onChange={setSelected}>
+                {/* <Listbox value={selected} onChange={setSelected}>
                   {({ open }) => (
                     <>
                       <Listbox.Label className="sr-only">
@@ -195,7 +176,7 @@ export default function PostWindow() {
                       </div>
                     </>
                   )}
-                </Listbox>
+                </Listbox> */}
               </div>
             </div>
             {/* <div className="flex-shrink-0">
@@ -212,7 +193,7 @@ export default function PostWindow() {
       <div className="flex-shrink-0">
         <img
           className="inline-block w-10 h-10 rounded-full"
-          src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+          src="ohno.gif"
           alt=""
         />
       </div>
