@@ -26,10 +26,10 @@ export default function Chat({ askButton, time }) {
       );
 
       const newPost = {
-        id: response.data.time,
+        id: response.data,
         time: payload.time,
         question: payload.question,
-        answer: response.data.question,
+        answer: response.data,
         // answer: response.data.answer,
       };
       setPosts((prevPosts) => [...prevPosts, newPost]);
@@ -46,7 +46,7 @@ export default function Chat({ askButton, time }) {
 
   return (
     <Transition.Root show={open} as={Fragment}>
-      <Dialog as="div" className="relative z-20 " onClose={setOpen}>
+      <Dialog as="div" className="relative z-50" onClose={setOpen}>
         <div className="fixed inset-0" />
 
         <div className="fixed inset-0 overflow-hidden">
@@ -61,7 +61,7 @@ export default function Chat({ askButton, time }) {
                 leaveFrom="translate-x-0"
                 leaveTo="translate-x-full"
               >
-                <Dialog.Panel className="right-0 w-screen h-full overflow-y-auto pointer-events-auto ">
+                <Dialog.Panel className="right-0 w-screen overflow-y-auto pointer-events-auto h-hull ">
                   <div className="flex flex-col py-6 mx-4 mb-4 overflow-y-scroll bg-white border-2 shadow-xl max-h-2/3 bottom-10 rounded-xl border-slate-600">
                     <div className="px-4 sm:px-6">
                       <div className="flex items-start justify-between">

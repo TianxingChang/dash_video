@@ -4,3 +4,8 @@ package-lock.json
 /public/test_fyp.mp4
 /public/ch9.pdfnpm 
 /public/test_fyp.mp3
+/public/*.mp3
+/public/*.tsv
+/public/*.srt 
+/public/*.txt
+/public/*.json

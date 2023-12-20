@@ -73,7 +73,7 @@ export default function PostWindow({ key, post }) {
             <textarea
               readOnly={true}
               name="comment"
-              rows={3}
+              rows={2}
               id="comment"
               className="block w-full h-auto resize-none border-0 bg-transparent py-1.5 text-gray-900 placeholder:text-gray-900 focus:ring-0 sm:text-sm sm:leading-6"
               placeholder={post}
