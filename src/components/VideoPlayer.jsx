@@ -1,15 +1,17 @@
 import ReactPlayer from "react-player";
 import React, { useRef, useEffect } from "react";
 
-const VideoPlayer = ({ isVideo }) => {
+const VideoPlayer = ({ isVideo, onVideoSwitch }) => {
   const playerRef = useRef(null); // Create a reference to the ReactPlayer component
 
   const handleButtonClick = () => {
     if (playerRef.current) {
       const currentTime = playerRef.current.getCurrentTime();
-      console.log("Current play time:", currentTime);
+      onVideoSwitch(currentTime);
     }
   };
+
+  setInterval(handleButtonClick, 500);
 
   useEffect(() => {
     handleButtonClick();

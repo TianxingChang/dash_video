@@ -1,16 +1,15 @@
+import React from "react";
 import { Fragment, useState, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import ChatWindow from "./ChatWindow";
-import AnswerWindow from "./AnswerWindow";
-import PostWindow from "./postWIndow";
+import ChatWindow from "./ChatBot/ChatWindow";
 
-export default function Chat({ askButton, time }) {
-  const [open, setOpen] = useState(askButton);
+export default function Notes({ noteButton, time }) {
+  const [open, setOpen] = useState(noteButton);
 
   useEffect(() => {
-    setOpen(askButton);
-  }, [askButton]);
+    setOpen(noteButton);
+  }, [noteButton]);
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -34,7 +33,7 @@ export default function Chat({ askButton, time }) {
                     <div className="px-4 sm:px-6">
                       <div className="flex items-start justify-between">
                         <Dialog.Title className="text-base font-semibold leading-6 text-gray-900">
-                          AI tutor
+                          Notes
                         </Dialog.Title>
                         <div className="flex items-center ml-3 h-7">
                           <button
@@ -51,11 +50,9 @@ export default function Chat({ askButton, time }) {
                     </div>
                     <div className="relative flex-1 px-4 mt-2 sm:px-6">
                       <span className="inline-flex mb-4 items-center rounded-md bg-gray-50 px-1.5 py-0.5 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">
-                        Ask at Time{" "}
+                        Timestamp{" "}
                         {`${parseInt(time / 60)}:${parseInt(time) % 60}`}
                       </span>
-                      <PostWindow />
-                      <AnswerWindow />
                       <ChatWindow />
                     </div>
                   </div>
