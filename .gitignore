@@ -1,0 +1,5 @@
+.DS_STORE
+/node_modules
+package-lock.json
+/public/test_fyp.mp4
+/public/ch9.pdf
