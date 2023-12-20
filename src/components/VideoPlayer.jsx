@@ -1,7 +1,7 @@
 import ReactPlayer from "react-player";
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 
-const VideoPlayer = () => {
+const VideoPlayer = ({ isVideo }) => {
   const playerRef = useRef(null); // Create a reference to the ReactPlayer component
 
   const handleButtonClick = () => {
@@ -10,6 +10,10 @@ const VideoPlayer = () => {
       console.log("Current play time:", currentTime);
     }
   };
+
+  useEffect(() => {
+    handleButtonClick();
+  }, [isVideo]);
 
   return (
     <>
@@ -25,8 +29,6 @@ const VideoPlayer = () => {
           controls="true"
         />
       </div>
-
-      <button onClick={handleButtonClick}>Get Current Time</button>
     </>
   );
 };

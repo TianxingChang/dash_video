@@ -31,9 +31,7 @@ function App() {
             className="flex-row relative justify-center w-full  aspect-video
          rounded-lg border-[2px] bg-videoborder border-videoborder"
           >
-            {<VideoPlayer />}
-            <PDF_player isVideo={isVideo} />
-
+            {<VideoPlayer isVideo={isVideo} />}
             {/* <PDF_player isVideo={isVideo} /> */}
 
             {/* <Pdf className="w-full h-[1000px] overflow-y-auto" /> */}
