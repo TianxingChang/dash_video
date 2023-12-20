@@ -1,5 +1,5 @@
 import { Button } from "@material-tailwind/react";
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 
 const VideoFunc = ({ askButton, setAskButton, setIsVideo, isVideo }) => {
   const handleAskButtonClick = () => {

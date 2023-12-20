@@ -2,20 +2,20 @@ import ReactPlayer from "react-player";
 import React, { useRef } from "react";
 
 const VideoPlayer = () => {
-  // const playerRef = useRef(null);
+  const playerRef = useRef(null); // Create a reference to the ReactPlayer component
 
-  // const handleButtonClick = ({ playerRef }) => {
-  //   if (playerRef.current) {
-  //     const currentTime = playerRef.current.getCurrentTime();
-  //     console.log("Current play time:", currentTime);
-  //   }
-  // };
+  const handleButtonClick = () => {
+    if (playerRef.current) {
+      const currentTime = playerRef.current.getCurrentTime();
+      console.log("Current play time:", currentTime);
+    }
+  };
 
   return (
     <>
       <div className="relative z-10 w-full rounded-md aspect-video ">
         <ReactPlayer
-          // ref={playerRef}
+          ref={playerRef}
           width="100%"
           height="100%"
           // url="https://www.youtube.com/watch?v=bNb2fEVKeEo&list=PL3FW7Lu3i5JvHM8ljYj-zLfQRF3EO8sYv&index=5"
@@ -26,7 +26,7 @@ const VideoPlayer = () => {
         />
       </div>
 
-      {/* <button onClick={handleButtonClick}>Get Current Time</button> */}
+      <button onClick={handleButtonClick}>Get Current Time</button>
     </>
   );
 };
